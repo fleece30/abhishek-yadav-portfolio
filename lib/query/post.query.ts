@@ -1,6 +1,5 @@
 import { builder } from "../builder";
 import { prisma } from "../prisma";
-import { PrismaPromise } from ".prisma/client";
 
 builder.queryField("posts", (t) =>
   t.prismaField({

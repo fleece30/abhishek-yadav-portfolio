@@ -36,12 +36,31 @@ const Post: React.FC<PostProps> = ({ data }) => {
 };
 
 export const getServerSideProps = async (context: any) => {
-  const { data } = await apollo.query({
-    query: getPostByIdQuery,
-    variables: {
-      postId: context.params.post,
+  // const { data } = await apollo.query({
+  //   query: getPostByIdQuery,
+  //   variables: {
+  //     postId: context.params.post,
+  //   },
+  // });
+  // console.log(data);
+  const data = {
+    postbyid: {
+      __typename: "Post",
+      id: "64a822d119e5695955906c43",
+      title: "The ghosts of childhood",
+      content:
+        "The ghosts of many childhoods,\n" +
+        "Roam this house of yore.\n" +
+        "Reliving tales of a time long gone,\n" +
+        "Of gully cricket and of stapu and more.\n" +
+        "\n" +
+        "To dancing in the rain and,\n" +
+        "The pakodas we used to adore,\n" +
+        "To a new book and home-grown mangoes,\n" +
+        "Take me back once more.",
+      createdAt: "2023-07-07",
     },
-  });
+  };
   return {
     props: {
       data: data.postbyid,

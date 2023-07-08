@@ -16,7 +16,14 @@ const Login: React.FC<loginProps> = ({}) => {
 
   return (
     <div className="mt-20">
-      <a onClick={() => signIn()}>Login</a>
+      <a
+        onClick={(e) => {
+          e.preventDefault();
+          signIn();
+        }}
+      >
+        Login
+      </a>
     </div>
   );
 };

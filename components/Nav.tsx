@@ -32,7 +32,13 @@ const Nav: React.FC<NavProps> = ({}) => {
           </li>
           <li>
             {status === "authenticated" && (
-              <Link href={"/"} onClick={() => signOut()}>
+              <Link
+                href={"/"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  signOut();
+                }}
+              >
                 Logout
               </Link>
             )}

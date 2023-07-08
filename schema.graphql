@@ -1,0 +1,40 @@
+type Comment {
+  comment: ID!
+  id: ID!
+  post: Post!
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The mutation root type."""
+type Mutation {
+  createpost(content: String!, title: String!, userEmail: String!): Post!
+}
+
+type Post {
+  comments: [Comment!]!
+  content: String!
+  createdAt: Date!
+  id: ID!
+  likes: Int!
+  title: String!
+  user: User!
+}
+
+"""The query root type."""
+type Query {
+  postbyid(postId: String!): Post!
+  posts: [Post!]!
+  users: [User!]!
+}
+
+type User {
+  email: String
+  id: ID!
+  image: String
+  name: String
+  posts: [Post!]!
+}

@@ -1,27 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html {
+  font-family: 'poppins', serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.nav {
+  position: fixed;
+  top: 0;
+  width: calc(100% + 80px);
+  margin-left: -40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  z-index: 1000;
+  transition: 0.4s all;
+  background-color: white;
+}
+.nav a {
+  text-decoration: none;
+}
+.menu-links ul li {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: 1s all;
+}
+.menu-links ul li a {
+  transition: 0.3s all;
+}
+.menu-links ul li a.active {
+  color: #dc9dcd;
+}
+.menu-links ul li a::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 3px;
+  top: 100%;
+  left: 0;
+  background: #dc9dcd;
+  transition: transform 0.5s;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+.menu-links ul li a:hover {
+  color: #7a8586;
+}
+.menu-links ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.menu-links ul li img {
+  width: 1.4em;
+  position: relative;
+  top: -0.1em;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.small-link {
+  position: relative;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.small-link::after {
+  position: absolute;
+  content: '';
+  min-width: 100%;
+  height: 30%;
+  left: 0;
+  bottom: 10%;
+  background-color: #dc9dcd;
+  z-index: -1;
+  transition: 0.4s height;
+}
+
+.small-link:hover::after {
+  height: 90%;
 }

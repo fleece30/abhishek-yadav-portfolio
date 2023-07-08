@@ -1,7 +1,10 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { endpoint, prodEndpoint } from "@/lib/config";
+
+const uri = process.env.NODE_ENV === "development" ? endpoint : prodEndpoint;
 
 const client = new ApolloClient({
-  uri: "https://master--vermillion-speculoos-e9583f.netlify.app/api/graphql",
+  uri,
   cache: new InMemoryCache(),
 });
 

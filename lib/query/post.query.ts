@@ -1,5 +1,6 @@
 import { builder } from "../builder";
 import { prisma } from "../prisma";
+import { PrismaPromise } from ".prisma/client";
 
 builder.queryField("posts", (t) =>
   t.prismaField({
@@ -16,8 +17,9 @@ builder.queryField("postbyid", (t) =>
     args: {
       postId: t.arg.string({ required: true }),
     },
-    resolve: async (query, parents, args) => {
-      return prisma.post.findUnique({ ...query, where: { id: args.postId } });
+    // @ts-ignore
+    resolve: async (query, _parents, _args, _info) => {
+      return prisma.post.findUnique({ ...query, where: { id: _args.postId } });
     },
   })
 );

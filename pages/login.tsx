@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 interface loginProps {}
 
 const Login: React.FC<loginProps> = ({}) => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
 
   useEffect(() => {

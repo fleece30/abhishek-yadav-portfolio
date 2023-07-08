@@ -10,7 +10,7 @@ builder.mutationField("createpost", (t) =>
       userEmail: t.arg.string({ required: true }),
     },
 
-    resolve: async (query, parent, args, info) => {
+    resolve: async (query, parent, args) => {
       return prisma.post.create({
         ...query,
         data: {

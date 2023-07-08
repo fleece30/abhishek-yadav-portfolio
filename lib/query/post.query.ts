@@ -1,6 +1,5 @@
 import { builder } from "../builder";
 import { prisma } from "../prisma";
-import { query } from "express";
 
 builder.queryField("posts", (t) =>
   t.prismaField({
@@ -17,7 +16,7 @@ builder.queryField("postbyid", (t) =>
     args: {
       postId: t.arg.string({ required: true }),
     },
-    resolve: async (query, parents, args, info) => {
+    resolve: async (query, parents, args) => {
       return prisma.post.findUnique({ ...query, where: { id: args.postId } });
     },
   })

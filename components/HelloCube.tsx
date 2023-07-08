@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import {
   OrbitControls,
   PerspectiveCamera,
@@ -18,7 +18,7 @@ const Mesh = () => {
     (state) => (textRef.current.position.x = Math.sin(state.clock.elapsedTime))
   );
 
-  useFrame(({ mouse, viewport }) => {
+  useFrame(({ mouse }) => {
     targetX += (mouse.x - targetX) * 0.1;
     targetY += (mouse.y - targetY) * 0.1;
     boxRef.current!.lookAt(targetX, targetY, 1);

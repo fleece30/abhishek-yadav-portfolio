@@ -50,8 +50,11 @@ const deletePostMutation = gql`
 `;
 
 const updatePostLikeCountMutation = gql`
-  mutation UpdatePostLikeCountMutation($postId: String!, $newLikeCount: Int!) {
-    updatelikecount(postId: $postId, newLikeCount: $newLikeCount) {
+  mutation UpdatePostLikeCountMutation(
+    $postId: String!
+    $newLikeCountDelta: Int!
+  ) {
+    updatelikecount(postId: $postId, newLikeCountDelta: $newLikeCountDelta) {
       id
       likes
     }
@@ -71,7 +74,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
     await updatePostLikeCount({
       variables: {
         postId: router.query.post,
-        newLikeCount: localLikesRef.current,
+        newLikeCountDelta: localLikesRef.current - data.likes,
       },
     }).then((res) => console.log(res));
   };

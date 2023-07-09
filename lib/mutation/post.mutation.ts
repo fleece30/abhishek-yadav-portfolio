@@ -49,7 +49,7 @@ builder.mutationField("updatelikecount", (t) =>
     type: "Post",
     args: {
       postId: t.arg.string({ required: true }),
-      newLikeCount: t.arg.int({ required: true }),
+      newLikeCountDelta: t.arg.int({ required: true }),
     },
     //@ts-ignore
     resolve: async (query, _parent, _args, _info) => {
@@ -59,7 +59,9 @@ builder.mutationField("updatelikecount", (t) =>
           id: _args.postId,
         },
         data: {
-          likes: _args.newLikeCount,
+          likes: {
+            increment: _args.newLikeCountDelta,
+          },
         },
       });
     },

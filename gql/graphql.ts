@@ -49,7 +49,7 @@ export type MutationDeletepostArgs = {
 
 /** The mutation root type. */
 export type MutationUpdatelikecountArgs = {
-  newLikeCount: Scalars['Int']['input'];
+  newLikeCountDelta: Scalars['Int']['input'];
   postId: Scalars['String']['input'];
 };
 

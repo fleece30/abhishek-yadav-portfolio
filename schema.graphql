@@ -13,7 +13,7 @@ scalar Date
 type Mutation {
   createpost(content: String!, title: String!, userEmail: String!): Post!
   deletepost(postId: String!): Post!
-  updatelikecount(newLikeCount: Int!, postId: String!): Post!
+  updatelikecount(newLikeCountDelta: Int!, postId: String!): Post!
 }
 
 type Post {

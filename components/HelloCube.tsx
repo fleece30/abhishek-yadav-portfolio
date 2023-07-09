@@ -44,7 +44,7 @@ const HelloCube: React.FC<HelloCubeProps> = ({}) => {
   return (
     <div className="w-full md:w-1/2 h-screen">
       <Canvas>
-        <OrbitControls enableZoom={false} />
+        {/*<OrbitControls enableZoom={false} />*/}
         <ambientLight intensity={1} />
         <directionalLight position={[6, 2, 1]} />
         <Mesh />

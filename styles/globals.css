@@ -6,6 +6,7 @@
 
 html {
   font-family: 'poppins', serif;
+  scroll-behavior: smooth;
 }
 
 .nav {
@@ -87,4 +88,8 @@ ul {
 
 .small-link:hover::after {
   height: 90%;
+}
+
+canvas {
+  overflow: scroll;
 }

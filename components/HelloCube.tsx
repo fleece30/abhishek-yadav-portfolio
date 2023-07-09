@@ -1,11 +1,6 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  RenderTexture,
-  Text,
-} from "@react-three/drei";
+import { PerspectiveCamera, RenderTexture, Text } from "@react-three/drei";
 
 interface HelloCubeProps {}
 

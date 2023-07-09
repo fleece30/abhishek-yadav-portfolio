@@ -5,7 +5,7 @@ builder.queryField("posts", (t) =>
   t.prismaField({
     type: ["Post"],
     resolve: async (query, _parents, _args, _info) => {
-      return prisma.post.findMany({ ...query });
+      return prisma.post.findMany({ ...query, orderBy: { createdAt: "desc" } });
     },
   })
 );

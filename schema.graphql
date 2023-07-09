@@ -12,6 +12,8 @@ scalar Date
 """The mutation root type."""
 type Mutation {
   createpost(content: String!, title: String!, userEmail: String!): Post!
+  deletepost(postId: String!): Post!
+  updatelikecount(newLikeCount: Int!, postId: String!): Post!
 }
 
 type Post {

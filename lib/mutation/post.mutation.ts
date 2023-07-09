@@ -9,7 +9,7 @@ builder.mutationField("createpost", (t) =>
       content: t.arg.string({ required: true }),
       userEmail: t.arg.string({ required: true }),
     },
-
+    //@ts-ignore
     resolve: async (query, parent, args) => {
       return prisma.post.create({
         ...query,
@@ -20,6 +20,46 @@ builder.mutationField("createpost", (t) =>
           user: {
             connect: { email: args.userEmail },
           },
+        },
+      });
+    },
+  })
+);
+
+builder.mutationField("deletepost", (t) =>
+  t.prismaField({
+    type: "Post",
+    args: {
+      postId: t.arg.string({ required: true }),
+    },
+    //@ts-ignore
+    resolve: async (query, _parent, _args, _info) => {
+      return prisma.post.delete({
+        ...query,
+        where: {
+          id: _args.postId,
+        },
+      });
+    },
+  })
+);
+
+builder.mutationField("updatelikecount", (t) =>
+  t.prismaField({
+    type: "Post",
+    args: {
+      postId: t.arg.string({ required: true }),
+      newLikeCount: t.arg.int({ required: true }),
+    },
+    //@ts-ignore
+    resolve: async (query, _parent, _args, _info) => {
+      return prisma.post.update({
+        ...query,
+        where: {
+          id: _args.postId,
+        },
+        data: {
+          likes: _args.newLikeCount,
         },
       });
     },

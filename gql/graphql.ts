@@ -28,6 +28,8 @@ export type Comment = {
 export type Mutation = {
   __typename?: 'Mutation';
   createpost: Post;
+  deletepost: Post;
+  updatelikecount: Post;
 };
 
 
@@ -36,6 +38,19 @@ export type MutationCreatepostArgs = {
   content: Scalars['String']['input'];
   title: Scalars['String']['input'];
   userEmail: Scalars['String']['input'];
+};
+
+
+/** The mutation root type. */
+export type MutationDeletepostArgs = {
+  postId: Scalars['String']['input'];
+};
+
+
+/** The mutation root type. */
+export type MutationUpdatelikecountArgs = {
+  newLikeCount: Scalars['Int']['input'];
+  postId: Scalars['String']['input'];
 };
 
 export type Post = {

@@ -1,7 +1,7 @@
 import React from "react";
 import apollo from "@/lib/apollo";
 import { gql } from "@apollo/client";
-import BlogListItem from "@/components/blogListItem";
+import BlogListItem from "@/components/BlogListItem";
 
 interface blogProps {
   data: any;

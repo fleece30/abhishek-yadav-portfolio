@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import apollo from "@/lib/apollo";
 import { useSession } from "next-auth/react";
@@ -63,7 +63,7 @@ const updatePostLikeCountMutation = gql`
 
 const Post: React.FC<PostProps> = ({ data }) => {
   const [localLikes, setLocalLikes] = useState(data.likes);
-  const localLikesRef = useRef(localLikes);
+  const localLikesRef = useRef(0);
   const { status } = useSession();
 
   const router = useRouter();
@@ -71,20 +71,20 @@ const Post: React.FC<PostProps> = ({ data }) => {
   const [updatePostLikeCount] = useMutation(updatePostLikeCountMutation);
 
   const updateLikeCount = async () => {
+    console.log(data.likes);
     await updatePostLikeCount({
       variables: {
         postId: router.query.post,
-        newLikeCountDelta: localLikesRef.current - data.likes,
+        newLikeCountDelta: localLikesRef.current,
       },
-    }).then((res) => console.log(res));
+    }).then((res) => {
+      console.log(res);
+      localLikesRef.current = 0;
+    });
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleLike = useCallback(_debounce(updateLikeCount, 500), []);
-
-  useEffect(() => {
-    localLikesRef.current = localLikes;
-  }, [localLikes]);
 
   const handleDelete = async () => {
     await deletePost({
@@ -112,6 +112,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
               <CallToActionBtn
                 onClick={() => {
                   setLocalLikes(localLikes + 1);
+                  localLikesRef.current++;
                   handleLike();
                 }}
                 icon={<CIcon icon={cilBadge} height={25} />}
@@ -145,6 +146,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
 export const getServerSideProps = async (context: any) => {
   const { data } = await apollo.query({
     query: getPostByIdQuery,
+    fetchPolicy: "no-cache",
     variables: {
       postId: context.params.post,
     },

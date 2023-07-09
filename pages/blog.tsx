@@ -44,7 +44,10 @@ const blog: React.FC<blogProps> = ({ data }) => {
 };
 
 export const getServerSideProps = async () => {
-  const { data } = await apollo.query({ query: getPostsQuery });
+  const { data } = await apollo.query({
+    query: getPostsQuery,
+    fetchPolicy: "no-cache",
+  });
   return {
     props: {
       data,

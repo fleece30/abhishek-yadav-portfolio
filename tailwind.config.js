@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        "max-height": "max-height",
+        padding: "padding",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

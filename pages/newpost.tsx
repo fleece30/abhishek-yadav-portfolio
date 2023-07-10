@@ -3,6 +3,8 @@ import { useSession } from "next-auth/react";
 import { gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import Button from "@/components/Button";
+import InputField from "@/components/InputField";
+import TextareaField from "@/components/TextareaField";
 
 interface NewPostProps {}
 
@@ -45,15 +47,24 @@ const NewPost: React.FC<NewPostProps> = ({}) => {
     <div className="flex flex-col w-full px-5 text-center md:text-left md:px-48 mt-32 space-y-16">
       <span className="text-3xl font-bold w-full">New blog post</span>
       <div className="flex flex-col items-center w-full space-y-10">
-        <input
-          type="text"
-          placeholder="Title"
-          className="px-6 py-4 outline-none border-b-[1px] border-gray-200 md:w-1/2"
+        {/*<input*/}
+        {/*  type="text"*/}
+        {/*  placeholder="Title"*/}
+        {/*  className="px-6 py-4 outline-none border-b-[1px] border-gray-200 md:w-1/2"*/}
+        {/*  onChange={(e) => setPostTitle(e.target.value)}*/}
+        {/*/>*/}
+        <InputField
+          type={"text"}
+          placeholder={"Title"}
           onChange={(e) => setPostTitle(e.target.value)}
         />
-        <textarea
-          placeholder="Post Content"
-          className="px-6 py-4 outline-none whitespace-pre-wrap border-b-[1px] border-gray-200 md:w-1/2 h-72"
+        {/*<textarea*/}
+        {/*  placeholder="Post Content"*/}
+        {/*  className="px-6 py-4 outline-none whitespace-pre-wrap border-b-[1px] border-gray-200 md:w-1/2 h-72"*/}
+        {/*  onChange={(e) => setPostContent(e.target.value)}*/}
+        {/*/>*/}
+        <TextareaField
+          placeholder={"Post content"}
           onChange={(e) => setPostContent(e.target.value)}
         />
         <Button

@@ -1,7 +1,9 @@
 type Comment {
-  comment: ID!
+  comment: String!
+  createdAt: Date!
   id: ID!
   post: Post!
+  postedBy: String!
 }
 
 """
@@ -11,6 +13,7 @@ scalar Date
 
 """The mutation root type."""
 type Mutation {
+  addcomment(comment: String!, postId: String!, postedBy: String): Comment!
   createpost(content: String!, title: String!, userEmail: String!): Post!
   deletepost(postId: String!): Post!
   updatelikecount(newLikeCountDelta: Int!, postId: String!): Post!

@@ -4,17 +4,19 @@ interface CallToActionBtnProps {
   onClick: () => void;
   icon?: ReactElement;
   toolTipText: string;
+  classes?: string;
 }
 
 const CallToActionBtn: React.FC<CallToActionBtnProps> = ({
   onClick,
   icon,
   toolTipText,
+  classes,
 }) => {
   return (
     <button
       type="button"
-      className="relative w-fit h-fit tooltip"
+      className={`relative w-fit h-fit tooltip ${classes}`}
       onClick={onClick}
     >
       {icon !== undefined && (

@@ -19,17 +19,28 @@ export type Scalars = {
 
 export type Comment = {
   __typename?: 'Comment';
-  comment: Scalars['ID']['output'];
+  comment: Scalars['String']['output'];
+  createdAt: Scalars['Date']['output'];
   id: Scalars['ID']['output'];
   post: Post;
+  postedBy: Scalars['String']['output'];
 };
 
 /** The mutation root type. */
 export type Mutation = {
   __typename?: 'Mutation';
+  addcomment: Comment;
   createpost: Post;
   deletepost: Post;
   updatelikecount: Post;
+};
+
+
+/** The mutation root type. */
+export type MutationAddcommentArgs = {
+  comment: Scalars['String']['input'];
+  postId: Scalars['String']['input'];
+  postedBy?: InputMaybe<Scalars['String']['input']>;
 };
 
 

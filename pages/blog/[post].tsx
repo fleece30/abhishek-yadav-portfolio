@@ -2,12 +2,13 @@ import React, { useCallback, useRef, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import apollo from "@/lib/apollo";
 import { useSession } from "next-auth/react";
-import Button from "@/components/Button";
 import { useRouter } from "next/router";
 import CallToActionBtn from "@/components/CallToActionBtn";
-import { cilBadge, cilCommentBubble } from "@coreui/icons";
+import { cilBadge, cilCommentBubble, cilTrash } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import _debounce from "lodash/debounce";
+import Comment from "@/components/Comment";
+import CommentBox from "@/components/CommentBox";
 
 interface PostProps {
   data: Post;
@@ -18,12 +19,14 @@ type Post = {
   id: string;
   title: string;
   content: string;
-  comments: Comment[];
-  createdAt: Date;
+  comments: CommentItem[];
+  createdAt: string;
 };
 
-type Comment = {
+type CommentItem = {
   comment: string;
+  postedBy: string;
+  createdAt: string;
 };
 
 const getPostByIdQuery = gql`
@@ -35,6 +38,8 @@ const getPostByIdQuery = gql`
       content
       comments {
         comment
+        postedBy
+        createdAt
       }
       createdAt
     }
@@ -61,25 +66,60 @@ const updatePostLikeCountMutation = gql`
   }
 `;
 
+const postCommentMutation = gql`
+  mutation PostCommentMutation(
+    $comment: String!
+    $postedBy: String!
+    $postId: String!
+  ) {
+    addcomment(comment: $comment, postedBy: $postedBy, postId: $postId) {
+      post {
+        id
+      }
+    }
+  }
+`;
+
 const Post: React.FC<PostProps> = ({ data }) => {
   const [localLikes, setLocalLikes] = useState(data.likes);
+  const [isCommentBoxOpen, setIsCommentBoxOpen] = useState(false);
+  const [commentBody, setCommentBody] = useState("");
+  const [commentAuthor, setCommentAuthor] = useState("");
   const localLikesRef = useRef(0);
+  const commentSectionRef = useRef<null | HTMLDivElement>(null);
   const { status } = useSession();
 
   const router = useRouter();
   const [deletePost] = useMutation(deletePostMutation);
   const [updatePostLikeCount] = useMutation(updatePostLikeCountMutation);
+  const [postComment] = useMutation(postCommentMutation);
 
   const updateLikeCount = async () => {
-    console.log(data.likes);
     await updatePostLikeCount({
       variables: {
         postId: router.query.post,
         newLikeCountDelta: localLikesRef.current,
       },
-    }).then((res) => {
-      console.log(res);
+    }).then(() => {
       localLikesRef.current = 0;
+    });
+  };
+
+  const handlePostComment = async () => {
+    await postComment({
+      variables: {
+        comment: commentBody,
+        postedBy: commentAuthor,
+        postId: router.query.post,
+      },
+    }).then(() => {
+      setIsCommentBoxOpen(false);
+      setCommentBody("");
+      setCommentAuthor("");
+      router.replace(router.asPath).then(() => {
+        if (commentSectionRef && commentSectionRef.current)
+          commentSectionRef.current.scrollIntoView();
+      });
     });
   };
 
@@ -107,7 +147,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
             <span>&bull;</span>
             <span>&bull;</span>
           </span>
-          <div className="flex space-x-10">
+          <div className="flex space-x-10" ref={commentSectionRef}>
             <div className="flex space-x-2 items-center">
               <CallToActionBtn
                 onClick={() => {
@@ -122,21 +162,44 @@ const Post: React.FC<PostProps> = ({ data }) => {
             </div>
             <div className="flex space-x-2 items-center">
               <CallToActionBtn
-                onClick={() => {}}
+                onClick={() => {
+                  setIsCommentBoxOpen(!isCommentBoxOpen);
+                }}
                 icon={<CIcon icon={cilCommentBubble} height={25} />}
                 toolTipText={"Leave a comment..."}
               />
               <span>{data.comments.length}</span>
             </div>
+            {status === "authenticated" && (
+              <div className="flex space-x-2 items-center">
+                <CallToActionBtn
+                  onClick={handleDelete}
+                  icon={<CIcon icon={cilTrash} height={25} />}
+                  toolTipText={"Delete post"}
+                />
+              </div>
+            )}
           </div>
-          {status === "authenticated" && (
-            <Button
-              text={"Delete Post"}
-              onClick={handleDelete}
-              primaryColor={"bg-red-300"}
-              hoverColor={"bg-red-500"}
-            />
-          )}
+          <CommentBox
+            isOpen={isCommentBoxOpen}
+            onInputFieldChange={(e) => setCommentAuthor(e.target.value)}
+            onTextareaChange={(e) => setCommentBody(e.target.value)}
+            inputFieldValue={commentAuthor}
+            textAreaValue={commentBody}
+            handleCallToAction={handlePostComment}
+          />
+          <div>
+            {data.comments.map((comment, index) => {
+              return (
+                <Comment
+                  key={index}
+                  commentBody={comment.comment}
+                  postedBy={comment.postedBy}
+                  createdAt={new Date(comment.createdAt)}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

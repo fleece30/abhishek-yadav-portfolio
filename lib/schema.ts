@@ -6,5 +6,6 @@ import "./types/comment.type";
 import "./query/user.query";
 import "./query/post.query";
 import "./mutation/post.mutation";
+import "./mutation/comment.mutation";
 
 export const schema = builder.toSchema();

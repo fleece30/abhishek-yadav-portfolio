@@ -5,7 +5,10 @@ builder.queryField("posts", (t) =>
   t.prismaField({
     type: ["Post"],
     resolve: async (query, _parents, _args, _info) => {
-      return prisma.post.findMany({ ...query, orderBy: { createdAt: "desc" } });
+      return prisma.post.findMany({
+        ...query,
+        orderBy: { createdAt: "desc" },
+      });
     },
   })
 );
@@ -18,7 +21,17 @@ builder.queryField("postbyid", (t) =>
     },
     // @ts-ignore
     resolve: async (query, _parents, _args, _info) => {
-      return prisma.post.findUnique({ ...query, where: { id: _args.postId } });
+      return prisma.post.findUnique({
+        ...query,
+        where: { id: _args.postId },
+        include: {
+          comments: {
+            orderBy: {
+              createdAt: "desc",
+            },
+          },
+        },
+      });
     },
   })
 );

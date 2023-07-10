@@ -10,15 +10,15 @@ builder.mutationField("createpost", (t) =>
       userEmail: t.arg.string({ required: true }),
     },
     //@ts-ignore
-    resolve: async (query, parent, args) => {
+    resolve: async (query, parent, _args) => {
       return prisma.post.create({
         ...query,
         data: {
-          title: args.title,
-          content: args.content,
+          title: _args.title,
+          content: _args.content,
           likes: 0,
           user: {
-            connect: { email: args.userEmail },
+            connect: { email: _args.userEmail },
           },
         },
       });

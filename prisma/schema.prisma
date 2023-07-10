@@ -44,6 +44,7 @@ model Session {
 model Comment {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   comment   String
+  postedBy  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   post      Post     @relation(fields: [postId], references: [id])

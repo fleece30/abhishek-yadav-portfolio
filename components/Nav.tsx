@@ -25,7 +25,7 @@ const Nav: React.FC<NavProps> = ({}) => {
             <Link href={"/blog"}>Blog</Link>
           </li>
           <li>
-            <Link href={""}>Projects</Link>
+            <Link href={"/projects"}>Projects</Link>
           </li>
           <li>
             <Link href={""}>Contact</Link>

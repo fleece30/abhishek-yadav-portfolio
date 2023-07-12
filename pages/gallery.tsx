@@ -9,7 +9,10 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
     return `https://drive.google.com/uc?export=view&id=${src}`;
   };
   return (
-    <div id={"gallery"} className="flex flex-col mt-24 px-32 w-full space-y-5">
+    <div
+      id={"gallery"}
+      className="flex flex-col mt-24 px-5 md:px-32 w-full space-y-5"
+    >
       <span className="text-3xl font-bold mb-5">Through my camera!</span>
       <div className="flex flex-col content-start md:h-[80em] flex-wrap overflow-x-scroll gap-2">
         {imageURLs.map((image, index) => {

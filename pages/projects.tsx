@@ -37,11 +37,11 @@ const Projects: React.FC<ProjectsProps> = ({}) => {
           "SpookyDeck, where you'll discover new favorites, revisit classics, and\n" +
           "unleash your inner horror enthusiast."
         }
-        imageSrc={"17RmlTpPzHvs4KtdZivtpu1xEvwTdpWKF"}
+        imageSrc={"1bjJdQPODAbTiDgb-cIraGvAYA6P1PQLw"}
         imageAlt={"Image by aleksandr_samochernyi on Freepik"}
         link={"https://www.spookydeck.com/"}
         linkText={"Start your spooky journey here!"}
-        classes={"flex-row-reverse"}
+        classes={"md:flex-row-reverse"}
         techStack={["ReactJS", "FastAPI", "Python", "Pandas"]}
       />
     </>

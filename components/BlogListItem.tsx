@@ -18,7 +18,7 @@ const BlogListItem: React.FC<BlogListItemProps> = ({
 }) => {
   const date = new Date(createdAt);
   return (
-    <Link href={`/blog/${id}`} className="md:w-1/3">
+    <Link href={`/blog/${id}`} className="md:w-4/5">
       <div className="flex flex-col space-y-2 border-b-[1px] border-b-gray-200 py-5">
         <div className="flex text-sm text-text-gray items-center space-x-1.5">
           <Image

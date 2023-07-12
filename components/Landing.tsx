@@ -29,7 +29,7 @@ const Landing: React.FC<LandingProps> = ({}) => {
           </h4>
           <h4 className="-mt-2">
             I document the{" "}
-            <Link href={"/blog"}>
+            <Link href={"/gallery"}>
               <span className="small-link">beauty</span>
             </Link>
             {" of life"}

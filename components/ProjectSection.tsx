@@ -30,10 +30,10 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
 
   return (
     <section
-      className={`h-screen w-screen flex items-center justify-around px-32 ${classes}`}
+      className={`h-screen w-screen flex flex-col md:flex-row my-24 md:my-0 items-center justify-around px-5 md:px-32 space-y-10 ${classes}`}
     >
       <div className="flex flex-col space-y-5">
-        <h1 className="text-6xl">
+        <h1 className="text-5xl md:text-6xl">
           <b>{title}</b>
         </h1>
         <h3 className="text-2xl">{subtitle}</h3>
@@ -48,13 +48,11 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
             );
           })}
         </div>
-        {link && (
-          <h4>
-            <a href={link} target="_blank">
-              <span className="small-link">{linkText}</span>
-            </a>
-          </h4>
-        )}
+        <h4 className={`${link ? "block" : "hidden"}`}>
+          <a href={link} target="_blank">
+            <span className="small-link">{linkText}</span>
+          </a>
+        </h4>
       </div>
       <Image
         loader={imageLoader}
@@ -62,6 +60,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
         alt={imageAlt}
         width={1000}
         height={500}
+        className="md:px-20"
       />
     </section>
   );

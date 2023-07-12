@@ -3,7 +3,7 @@ import apollo from "@/lib/apollo";
 import { gql } from "@apollo/client";
 import BlogListItem from "@/components/BlogListItem";
 
-interface blogProps {
+interface BlogProps {
   data: any;
 }
 
@@ -24,10 +24,10 @@ const getPostsQuery = gql`
     }
   }
 `;
-const blog: React.FC<blogProps> = ({ data }) => {
+const Blog: React.FC<BlogProps> = ({ data }) => {
   return (
     <div className="flex flex-col px-5 md:px-32 my-24">
-      <div className="flex flex-col">
+      <div className="flex flex-col md:w-3/5">
         <span className="text-3xl font-bold">Blog</span>
         {data.posts.map((item: Post, index: number) => (
           <BlogListItem
@@ -54,4 +54,4 @@ export const getServerSideProps = async () => {
     },
   };
 };
-export default blog;
+export default Blog;

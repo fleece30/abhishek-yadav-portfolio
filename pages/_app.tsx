@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
-import Nav from "@/components/Nav";
+import NavContainer from "@/components/Nav/NavContainer";
 import Head from "next/head";
 import { ApolloProvider } from "@apollo/client";
 import { SessionProvider } from "next-auth/react";
@@ -26,7 +26,7 @@ export default function App({
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
-        <Nav />
+        <NavContainer />
         <Component {...pageProps} />
       </ApolloProvider>
     </SessionProvider>

@@ -10,6 +10,8 @@ module.exports = {
       transitionProperty: {
         "max-height": "max-height",
         padding: "padding",
+        height: "height",
+        "space-y": "margin",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

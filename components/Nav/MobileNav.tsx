@@ -1,21 +1,30 @@
 import React from "react";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
 
-interface NavProps {}
+interface MobileNavProps {
+  status: string;
+  isMobileNavOpen: boolean;
+  signOut: () => void;
+  setIsMobileNavOpen: (newVal: boolean) => void;
+}
 
-const Nav: React.FC<NavProps> = ({}) => {
-  const { status } = useSession();
+const MobileNav: React.FC<MobileNavProps> = ({
+  status,
+  isMobileNavOpen,
+  signOut,
+  setIsMobileNavOpen,
+}) => {
   return (
     <div
-      className={`nav text-text-gray`}
-      // style={{ background: isAtTop ? "transparent" : "white" }}
+      className={`w-screen bg-white md:hidden transition-max-height duration-300 overflow-hidden ${
+        isMobileNavOpen ? "max-h-64" : "max-h-0"
+      }`}
     >
-      <span className="logo text-xl font-extrabold">
-        <Link href={"/"}>abhishek.dev</Link>
-      </span>
       <div className="menu-links text-md font-bold">
-        <ul>
+        <ul
+          className="flex flex-col space-y-5 items-center py-8"
+          onClick={() => setIsMobileNavOpen(false)}
+        >
           <li>
             {status === "authenticated" && (
               <Link href={"/newpost"}>New blog post</Link>
@@ -49,4 +58,4 @@ const Nav: React.FC<NavProps> = ({}) => {
   );
 };
 
-export default Nav;
+export default MobileNav;

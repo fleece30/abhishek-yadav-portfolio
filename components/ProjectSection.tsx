@@ -30,7 +30,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
 
   return (
     <section
-      className={`h-screen w-screen flex flex-col md:flex-row my-24 md:my-0 items-center justify-around px-5 md:px-32 space-y-10 ${classes}`}
+      className={`h-screen w-screen flex flex-col md:flex-row my-[60px] md:my-0 items-center justify-around px-5 md:px-32 space-y-10 ${classes}`}
     >
       <div className="flex flex-col space-y-5">
         <h1 className="text-5xl md:text-6xl">

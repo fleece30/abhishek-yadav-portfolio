@@ -9,6 +9,25 @@ html {
   scroll-behavior: smooth;
 }
 
+.markdown > * {
+  all: revert;
+  white-space: pre;
+}
+
+.markdown pre > code {
+  background-color: #f6f8fa;
+  padding: 1.5em 3em;
+  display: inline-block;
+  border-radius: 1em;
+}
+
+.markdown code {
+  background-color: #f6f8fa;
+  padding: 0 0.5em;
+  display: inline-block;
+  border-radius: 0.1em;
+}
+
 /*.tooltip {*/
 /*  font-size: 0.8em;*/
 /*  background-color: #2f3542;*/

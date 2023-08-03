@@ -9,6 +9,7 @@ import CIcon from "@coreui/icons-react";
 import _debounce from "lodash/debounce";
 import Comment from "@/components/Comment";
 import CommentBox from "@/components/CommentBox";
+import ReactMarkdown from "react-markdown";
 
 interface PostProps {
   data: Post;
@@ -140,7 +141,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
     <div className="flex justify-center">
       <div className="flex flex-col space-y-5 my-32 px-5 w-full md:w-1/2">
         <span className="font-bold text-3xl">{data.title}</span>
-        <span className="whitespace-pre-line">{data.content}</span>
+        <ReactMarkdown className="markdown">{data.content}</ReactMarkdown>
         <div className="flex flex-col">
           <span className="w-full justify-center flex space-x-3 my-5">
             <span>&bull;</span>

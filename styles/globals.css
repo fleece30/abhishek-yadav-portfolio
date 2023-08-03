@@ -11,7 +11,7 @@ html {
 
 .markdown > * {
   all: revert;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .markdown pre > code {

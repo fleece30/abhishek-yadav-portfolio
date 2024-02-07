@@ -36,9 +36,9 @@ const MobileNav: React.FC<MobileNavProps> = ({
           <li>
             <Link href={"/projects"}>Projects</Link>
           </li>
-          <li>
-            <Link href={""}>Contact</Link>
-          </li>
+          {/*<li>*/}
+          {/*  <Link href={""}>Contact</Link>*/}
+          {/*</li>*/}
           <li>
             {status === "authenticated" && (
               <Link

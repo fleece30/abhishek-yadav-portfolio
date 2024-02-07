@@ -21,9 +21,9 @@ const Nav: React.FC<NavProps> = ({ status, signOut }) => {
         <li>
           <Link href={"/projects"}>Projects</Link>
         </li>
-        <li>
-          <Link href={""}>Contact</Link>
-        </li>
+        {/*<li>*/}
+        {/*  <Link href={""}>Contact</Link>*/}
+        {/*</li>*/}
         <li>
           {status === "authenticated" && (
             <Link

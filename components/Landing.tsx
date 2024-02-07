@@ -28,19 +28,18 @@ const Landing: React.FC<LandingProps> = ({}) => {
             </Link>
           </h4>
           <h4 className="-mt-2">
-            I document the{" "}
+            I dabble in{" "}
             <Link href={"/gallery"}>
-              <span className="small-link">beauty</span>
+              <span className="small-link">photography</span>
             </Link>
-            {" of life"}
           </h4>
           <h4 className="-mt-2">
-            I love{" "}
+            I love to{" "}
             <a
               href="https://www.goodreads.com/user/show/14215021-abhishek-yadav"
               target="_blank"
             >
-              <span className="small-link">reading</span>
+              <span className="small-link">read</span>
             </a>
           </h4>
         </div>

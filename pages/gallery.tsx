@@ -6,14 +6,14 @@ interface GalleryProps {}
 
 const Gallery: React.FC<GalleryProps> = ({}) => {
   const imageLoader = ({ src }: { src: string }) => {
-    return `https://drive.google.com/uc?export=view&id=${src}`;
+    return `https://firebasestorage.googleapis.com/v0/b/abhishek-yadav-7cfd7.appspot.com/o/${src}`;
   };
   return (
     <div
       id={"gallery"}
       className="flex flex-col mt-24 px-5 md:px-32 w-full space-y-5"
     >
-      <span className="text-3xl font-bold mb-5">Through my camera!</span>
+      <span className="text-3xl font-bold mb-5">I appreciate aesthetics</span>
       <div className="flex flex-col content-start md:h-[80em] flex-wrap overflow-x-scroll gap-2">
         {imageURLs.map((image, index) => {
           return (

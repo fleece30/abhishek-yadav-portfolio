@@ -17,7 +17,9 @@ const Projects: React.FC<ProjectsProps> = ({}) => {
           "watchlists created by other users and never miss out on the next\n" +
           "blockbuster!"
         }
-        imageSrc={"1i6B9LuUvzX-SgsGrM5bTc1ainE_K179w"}
+        imageSrc={
+          "Shelfly-mockup(1).png?alt=media&token=26d78360-4b0d-4eae-8d31-c025cd91db2b"
+        }
         imageAlt={"Shelfly Mockup"}
         classes="bg-bg-pink"
         techStack={["React Native", "Firebase", "Next-Auth"]}
@@ -37,7 +39,9 @@ const Projects: React.FC<ProjectsProps> = ({}) => {
           "SpookyDeck, where you'll discover new favorites, revisit classics, and\n" +
           "unleash your inner horror enthusiast."
         }
-        imageSrc={"1bjJdQPODAbTiDgb-cIraGvAYA6P1PQLw"}
+        imageSrc={
+          "Spookydeck-mockup(2).png?alt=media&token=22ffae53-edd0-4b46-8934-8ad4a15fd9c4"
+        }
         imageAlt={"Image by aleksandr_samochernyi on Freepik"}
         link={"https://www.spookydeck.com/"}
         linkText={"Start your spooky journey here!"}

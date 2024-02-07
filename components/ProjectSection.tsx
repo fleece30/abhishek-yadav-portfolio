@@ -25,7 +25,8 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
   techStack,
 }) => {
   const imageLoader = ({ src }: { src: string }) => {
-    return `https://drive.google.com/uc?export=view&id=${src}`;
+    return `https://firebasestorage.googleapis.com/v0/b/abhishek-yadav-7cfd7.appspot.com/o/${src}`;
+    // return `https://drive.google.com/uc?export=view&id=${src}`;
   };
 
   return (
@@ -61,6 +62,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
         width={1000}
         height={500}
         className="md:px-20"
+        referrerPolicy="no-referrer"
       />
     </section>
   );

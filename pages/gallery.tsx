@@ -32,9 +32,9 @@ const Gallery: React.FC<GalleryProps> = ({}) => {
             </div>
           );
         })}
-        <h3 className="text-2xl font-bold text-center mt-5">
-          More coming soon!
-        </h3>
+        {/*<h3 className="text-2xl font-bold text-center mt-5">*/}
+        {/*  More coming soon!*/}
+        {/*</h3>*/}
       </div>
     </div>
   );

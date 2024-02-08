@@ -13,4 +13,9 @@ export const imageURLs = [
   "neowise.png?alt=media&token=6d0837ec-c944-4358-bbe4-89ff6b6b9ae1",
   "IMG_20181112_204115_008 - Copy.jpg?alt=media&token=37cf1313-2266-416d-a8c8-7b902ed61d52",
   "IMG_20181123_000917_969.jpg?alt=media&token=2a261f0e-70dc-4bdb-b5fd-ab5bca516c35",
+  "IMG_20170215_142555.jpg?alt=media&token=c15b95c1-ed12-43ee-b29c-02430cbbb47e",
+  "DSC_6654.jpg?alt=media&token=344d9ed2-051a-4aa9-b81c-21e7d959e58b",
+  "DSC_6652.jpg?alt=media&token=01768ece-888a-4f1d-85a9-09c4ca682238",
+  "DSC_3216.jpg?alt=media&token=f6583e25-d1c8-472e-a8bf-7a4d516790c5",
+  "DSC_3168.jpg?alt=media&token=05672376-9ddd-4d29-acfd-cad28d7df0c0",
 ];
